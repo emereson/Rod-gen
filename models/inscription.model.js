@@ -1,14 +1,14 @@
 const { DataTypes } = require('sequelize');
 const { db } = require('../database/config');
 
-const Inscriptionliga = db.define('inscriptionliga', {
+const Inscription = db.define('inscription', {
   id: {
     primaryKey: true,
     autoIncrement: true,
     allowNull: false,
     type: DataTypes.INTEGER,
   },
-  ligaId: {
+  eventId: {
     type: DataTypes.INTEGER,
     allowNull: false,
   },
@@ -63,8 +63,9 @@ const Inscriptionliga = db.define('inscriptionliga', {
     allowNull: false,
   },
   positionPlay1: {
-    type: DataTypes.STRING,
+    type: DataTypes.ENUM('Derecho', 'Rever', 'Ambos'),
     allowNull: false,
+    defaultValue: 'Ambos',
   },
   medicalProblem1: {
     type: DataTypes.STRING,
@@ -121,8 +122,9 @@ const Inscriptionliga = db.define('inscriptionliga', {
     allowNull: false,
   },
   positionPlay2: {
-    type: DataTypes.STRING,
+    type: DataTypes.ENUM('Derecho', 'Rever', 'Ambos'),
     allowNull: false,
+    defaultValue: 'Ambos',
   },
   medicalProblem2: {
     type: DataTypes.STRING,
@@ -130,4 +132,4 @@ const Inscriptionliga = db.define('inscriptionliga', {
   },
 });
 
-module.exports = Inscriptionliga;
+module.exports = Inscription;
