@@ -12,10 +12,6 @@ const Inscriptionliga = db.define('inscriptionliga', {
     type: DataTypes.INTEGER,
     allowNull: false,
   },
-  liga: {
-    type: DataTypes.ENUM('league', 'tournament ', 'american'),
-    allowNull: false,
-  },
   nameOne1: {
     type: DataTypes.STRING,
     allowNull: false,

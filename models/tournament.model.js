@@ -1,7 +1,7 @@
 const { DataTypes } = require('sequelize');
 const { db } = require('../database/config');
 
-const Torneo = db.define('torneo', {
+const Tournament = db.define('tournament', {
   id: {
     primaryKey: true,
     autoIncrement: true,
@@ -39,4 +39,4 @@ const Torneo = db.define('torneo', {
   },
 });
 
-module.exports = Torneo;
+module.exports = Tournament;
