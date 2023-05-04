@@ -9,12 +9,12 @@ router.get('/', inscriptionController.findAll);
 router.post('/', inscriptionController.create);
 router.patch(
   '/:id',
-  inscriptionMiddleware.validExistEvent,
+  inscriptionMiddleware.validExistInscription,
   inscriptionController.update
 );
 router.delete(
   '/:id',
-  inscriptionMiddleware.validExistEvent,
+  inscriptionMiddleware.validExistInscription,
   inscriptionController.delete
 );
 

@@ -33,7 +33,7 @@ const Inscription = db.define('inscription', {
     type: DataTypes.NUMBER,
     allowNull: false,
   },
-  birthdate1: {
+  birthDate1: {
     type: DataTypes.STRING,
     allowNull: false,
   },

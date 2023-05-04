@@ -2,7 +2,7 @@ const Inscription = require('../models/inscription.model');
 const AppError = require('../utils/AppError');
 const catchAsync = require('../utils/catchAsync');
 
-exports.validExistEvent = catchAsync(async (req, res, next) => {
+exports.validExistInscription = catchAsync(async (req, res, next) => {
   const { id } = req.params;
 
   const inscription = await Inscription.findOne({
@@ -12,7 +12,7 @@ exports.validExistEvent = catchAsync(async (req, res, next) => {
     },
   });
   if (!inscription) {
-    return next(new AppError(`event not found`, 404));
+    return next(new AppError(`Inscription not found`, 404));
   }
 
   req.inscription = inscription;
