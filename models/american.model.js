@@ -1,7 +1,7 @@
 const { DataTypes } = require('sequelize');
 const { db } = require('../database/config');
 
-const Americano = db.define('modelName', {
+const American = db.define('american', {
   id: {
     primaryKey: true,
     autoIncrement: true,
@@ -39,4 +39,4 @@ const Americano = db.define('modelName', {
   },
 });
 
-module.exports = ModelName;
+module.exports = American;

@@ -1,14 +1,14 @@
 const { DataTypes } = require('sequelize');
 const { db } = require('../database/config');
 
-const InscriptionTournament = db.define('inscriptionTournament', {
+const InscriptionAmerican = db.define('inscriptionAmerican', {
   id: {
     primaryKey: true,
     autoIncrement: true,
     allowNull: false,
     type: DataTypes.INTEGER,
   },
-  tournamentId: {
+  AmericanId: {
     type: DataTypes.INTEGER,
     allowNull: false,
   },
@@ -130,4 +130,4 @@ const InscriptionTournament = db.define('inscriptionTournament', {
   },
 });
 
-module.exports = InscriptionTournament;
+module.exports = InscriptionAmerican;
