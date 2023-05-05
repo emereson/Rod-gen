@@ -1,5 +1,7 @@
 const catchAsync = require('../utils/catchAsync');
 const Event = require('../models/event.model');
+const { ref, uploadBytes } = require('firebase/storage');
+const { storage } = require('../utils/firebase');
 
 exports.findAll = catchAsync(async (req, res, next) => {
   const event = await Event.findAll({
@@ -21,23 +23,26 @@ exports.create = catchAsync(async (req, res, next) => {
     typeEvent,
     description,
     rules,
-    imagen_de_portada,
     startDateEvent,
     endDateEvent,
     startDateInscription,
     endDateInscription,
   } = req.body;
 
+  const imgRef = ref(storage, `event/${Date.now()}-${req.file.originalname}`);
+
+  const imgUploaded = await uploadBytes(imgRef, req.file.buffer);
+
   const event = await Event.create({
     name,
     typeEvent,
     description,
     rules,
-    coverImg: imagen_de_portada,
     startDateEvent,
     endDateEvent,
     startDateInscription,
     endDateInscription,
+    coverImg: imgUploaded.metadata.fullPath,
   });
 
   return res.status(201).json({
@@ -73,7 +78,7 @@ exports.update = catchAsync(async (req, res, next) => {
     name,
     description,
     rules,
-    imagen_de_portada,
+    coverImg: imagen_de_portada,
     startDateEvent,
     endDateEvent,
     startDateInscription,

@@ -26,7 +26,6 @@ const Inscription = db.define('inscription', {
   },
   email1: {
     type: DataTypes.STRING,
-    unique: true,
     allowNull: false,
   },
   mobileNumber1: {
@@ -86,7 +85,6 @@ const Inscription = db.define('inscription', {
   },
   email2: {
     type: DataTypes.STRING,
-    unique: true,
     allowNull: false,
   },
   mobileNumber2: {

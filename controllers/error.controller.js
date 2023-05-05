@@ -32,7 +32,7 @@ const globalErrorHandler = (err, req, res, next) => {
     sendErrorDev(err, res);
   }
   if (process.env.NODE_ENV === 'production') {
-    sendErrorProd(error, res);
+    sendErrorProd(err, res);
   }
 };
 

@@ -1,4 +1,5 @@
 const Event = require('../models/event.model');
+const GalleryImg = require('../models/galleryImg.model');
 const Inscription = require('../models/inscription.model');
 const AppError = require('../utils/AppError');
 const catchAsync = require('../utils/catchAsync');
@@ -11,9 +12,14 @@ exports.validExistEvent = catchAsync(async (req, res, next) => {
       status: 'active',
       id,
     },
-    include: {
-      model: Inscription,
-    },
+    include: [
+      {
+        model: Inscription,
+      },
+      {
+        model: GalleryImg,
+      },
+    ],
   });
 
   if (!event) {
@@ -22,5 +28,6 @@ exports.validExistEvent = catchAsync(async (req, res, next) => {
 
   req.event = event;
   req.Inscription = event.Inscription;
+  req.GalleryImg = event.GalleryImg;
   next();
 });

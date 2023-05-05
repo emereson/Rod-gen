@@ -1,5 +1,6 @@
 const catchAsync = require('../utils/catchAsync');
 const Inscription = require('../models/inscription.model');
+const AppError = require('../utils/AppError');
 
 exports.findAll = catchAsync(async (req, res, next) => {
   const inscription = await Inscription.findAll({
