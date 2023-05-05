@@ -21,7 +21,7 @@ const Inscription = db.define('inscription', {
     allowNull: false,
   },
   RutPlayer1: {
-    type: DataTypes.NUMBER,
+    type: DataTypes.STRING,
     allowNull: false,
   },
   email1: {
@@ -30,7 +30,7 @@ const Inscription = db.define('inscription', {
     allowNull: false,
   },
   mobileNumber1: {
-    type: DataTypes.NUMBER,
+    type: DataTypes.STRING,
     allowNull: false,
   },
   birthDate1: {
@@ -57,6 +57,7 @@ const Inscription = db.define('inscription', {
       'mixto'
     ),
     allowNull: false,
+    defaultValue: 'mixto',
   },
   clubPlay1: {
     type: DataTypes.STRING,
@@ -80,7 +81,7 @@ const Inscription = db.define('inscription', {
     allowNull: false,
   },
   RutPlayer2: {
-    type: DataTypes.NUMBER,
+    type: DataTypes.STRING,
     allowNull: false,
   },
   email2: {
@@ -89,10 +90,10 @@ const Inscription = db.define('inscription', {
     allowNull: false,
   },
   mobileNumber2: {
-    type: DataTypes.NUMBER,
+    type: DataTypes.STRING,
     allowNull: false,
   },
-  birthdate2: {
+  birthDate2: {
     type: DataTypes.STRING,
     allowNull: false,
   },

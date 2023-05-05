@@ -6,7 +6,7 @@ const inscriptionMiddleware = require('../middlewares/inscription.middleware');
 const router = express.Router();
 
 router.get('/', inscriptionController.findAll);
-router.post('/', inscriptionController.create);
+router.post('/:id', inscriptionController.create);
 router.patch(
   '/:id',
   inscriptionMiddleware.validExistInscription,

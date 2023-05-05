@@ -16,13 +16,14 @@ exports.findAll = catchAsync(async (req, res, next) => {
 });
 
 exports.create = catchAsync(async (req, res, next) => {
+  const { id } = req.params;
   const {
     nameOne1,
     lastName1,
     RutPlayer1,
     email1,
     mobileNumber1,
-    birthdate1,
+    birthDate1,
     poloSize1,
     category1,
     clubPlay1,
@@ -33,7 +34,7 @@ exports.create = catchAsync(async (req, res, next) => {
     RutPlayer2,
     email2,
     mobileNumber2,
-    birthdate2,
+    birthDate2,
     poloSize2,
     category2,
     clubPlay2,
@@ -47,7 +48,7 @@ exports.create = catchAsync(async (req, res, next) => {
     RutPlayer1,
     email1,
     mobileNumber1,
-    birthdate1,
+    birthDate1,
     poloSize1,
     category1,
     clubPlay1,
@@ -58,12 +59,13 @@ exports.create = catchAsync(async (req, res, next) => {
     RutPlayer2,
     email2,
     mobileNumber2,
-    birthdate2,
+    birthDate2,
     poloSize2,
     category2,
     clubPlay2,
     positionPlay2,
     medicalProblem2,
+    eventId: id,
   });
 
   return res.status(201).json({

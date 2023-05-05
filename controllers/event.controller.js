@@ -18,6 +18,7 @@ exports.findAll = catchAsync(async (req, res, next) => {
 exports.create = catchAsync(async (req, res, next) => {
   const {
     name,
+    typeEvent,
     description,
     rules,
     imagen_de_portada,
@@ -29,6 +30,7 @@ exports.create = catchAsync(async (req, res, next) => {
 
   const event = await Event.create({
     name,
+    typeEvent,
     description,
     rules,
     coverImg: imagen_de_portada,
