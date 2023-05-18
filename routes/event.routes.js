@@ -7,11 +7,12 @@ const eventMiddleware = require('../middlewares/event.middleware');
 
 const router = express.Router();
 
-router
-  .route('/')
-  .get(eventController.findAll)
-  .post(upload.single('coverImg'), eventController.create);
+router.get('/', eventController.findAll);
+router.get('/liga', eventController.findAllLiga);
+router.get('/americano', eventController.findAllAmericano);
+router.get('/torneo', eventController.findAllTorneo);
 
+router.post('/', upload.single('coverImg'), eventController.create);
 router
   .route('/:id')
   .get(eventMiddleware.validExistEvent, eventController.findOne)

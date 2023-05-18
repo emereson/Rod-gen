@@ -12,7 +12,18 @@ const Event = db.define('event', {
     type: DataTypes.STRING,
     allowNull: false,
   },
-
+  subTitle: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
+  category: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
+  place: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
   typeEvent: {
     type: DataTypes.ENUM('Liga', 'Torneo', 'Americano'),
     allowNull: false,
@@ -22,9 +33,23 @@ const Event = db.define('event', {
     allowNull: false,
   },
   rules: {
-    type: DataTypes.STRING,
+    type: DataTypes.TEXT,
     allowNull: false,
   },
+  generalConditions: {
+    type: DataTypes.TEXT,
+    allowNull: false,
+  },
+
+  requirements: {
+    type: DataTypes.TEXT,
+    allowNull: false,
+  },
+  changesCancellations: {
+    type: DataTypes.TEXT,
+    allowNull: false,
+  },
+
   coverImg: {
     type: DataTypes.STRING,
     allowNull: false,
@@ -47,8 +72,12 @@ const Event = db.define('event', {
     type: DataTypes.STRING,
     allowNull: false,
   },
+  price: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
   status: {
-    type: DataTypes.ENUM('active', 'disabled'),
+    type: DataTypes.ENUM('active', 'inProgress', 'finished'),
     allowNull: false,
     defaultValue: 'active',
   },

@@ -1,26 +1,31 @@
 const { DataTypes } = require('sequelize');
 const { db } = require('../database/config');
 
-const GalleryImg = db.define('galleryImg', {
+const Gallery = db.define('gallery', {
   id: {
     primaryKey: true,
     autoIncrement: true,
     allowNull: false,
     type: DataTypes.INTEGER,
   },
-  galleryImgUrl: {
+  name: {
     type: DataTypes.STRING,
     allowNull: false,
   },
-  galleryId: {
-    type: DataTypes.INTEGER,
+  typeEvent: {
+    type: DataTypes.ENUM('Liga', 'Torneo', 'Americano'),
     allowNull: false,
   },
+
   status: {
     type: DataTypes.ENUM('active', 'disabled'),
     allowNull: false,
     defaultValue: 'active',
   },
+  important: {
+    type: DataTypes.ENUM('yes', 'no'),
+    allowNull: false,
+  },
 });
 
-module.exports = GalleryImg;
+module.exports = Gallery;

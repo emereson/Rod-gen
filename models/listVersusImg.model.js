@@ -1,18 +1,18 @@
 const { DataTypes } = require('sequelize');
 const { db } = require('../database/config');
 
-const GalleryImg = db.define('galleryImg', {
+const ListVersusImg = db.define('listVersusImg', {
   id: {
     primaryKey: true,
     autoIncrement: true,
     allowNull: false,
     type: DataTypes.INTEGER,
   },
-  galleryImgUrl: {
+  listVersusImgUrl: {
     type: DataTypes.STRING,
     allowNull: false,
   },
-  galleryId: {
+  listVersusId: {
     type: DataTypes.INTEGER,
     allowNull: false,
   },
@@ -23,4 +23,4 @@ const GalleryImg = db.define('galleryImg', {
   },
 });
 
-module.exports = GalleryImg;
+module.exports = ListVersusImg;

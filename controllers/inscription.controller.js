@@ -1,6 +1,7 @@
 const catchAsync = require('../utils/catchAsync');
 const Inscription = require('../models/inscription.model');
-const AppError = require('../utils/AppError');
+const { storage } = require('../utils/firebase');
+const { getDownloadURL, ref, uploadBytes } = require('firebase/storage');
 
 exports.findAll = catchAsync(async (req, res, next) => {
   const inscription = await Inscription.findAll({
@@ -16,10 +17,27 @@ exports.findAll = catchAsync(async (req, res, next) => {
   });
 });
 
+exports.findAllByEvent = catchAsync(async (req, res, next) => {
+  const { id } = req.params;
+
+  const inscription = await Inscription.findAll({
+    where: {
+      status: 'active',
+      eventId: id,
+    },
+  });
+
+  return res.status(200).json({
+    status: 'success',
+    results: inscription.length,
+    inscription,
+  });
+});
+
 exports.create = catchAsync(async (req, res, next) => {
   const { id } = req.params;
   const {
-    nameOne1,
+    name1,
     lastName1,
     RutPlayer1,
     email1,
@@ -30,7 +48,7 @@ exports.create = catchAsync(async (req, res, next) => {
     clubPlay1,
     positionPlay1,
     medicalProblem1,
-    nameOne2,
+    name2,
     lastName2,
     RutPlayer2,
     email2,
@@ -44,7 +62,7 @@ exports.create = catchAsync(async (req, res, next) => {
   } = req.body;
 
   const inscription = await Inscription.create({
-    nameOne1,
+    name1,
     lastName1,
     RutPlayer1,
     email1,
@@ -55,7 +73,7 @@ exports.create = catchAsync(async (req, res, next) => {
     clubPlay1,
     positionPlay1,
     medicalProblem1,
-    nameOne2,
+    name2,
     lastName2,
     RutPlayer2,
     email2,
@@ -88,53 +106,65 @@ exports.findOne = catchAsync(async (req, res, next) => {
 exports.update = catchAsync(async (req, res, next) => {
   const { inscription } = req;
   const {
-    nameOne1,
+    name1,
     lastName1,
     RutPlayer1,
     email1,
     mobileNumber1,
-    birthdate1,
+    birthDate1,
     poloSize1,
     category1,
     clubPlay1,
     positionPlay1,
     medicalProblem1,
-    nameOne2,
+    score1,
+    name2,
     lastName2,
     RutPlayer2,
     email2,
     mobileNumber2,
-    birthdate2,
+    birthDate2,
     poloSize2,
     category2,
     clubPlay2,
     positionPlay2,
     medicalProblem2,
+    score2,
   } = req.body;
 
-  await Inscription.update({
-    nameOne1,
+  const imgRef = ref(
+    storage,
+    `playerImg/${Date.now()}-${req.file.originalname}`
+  );
+
+  const imgUploaded = await uploadBytes(imgRef, req.file.buffer);
+
+  await inscription.update({
+    name1,
     lastName1,
     RutPlayer1,
     email1,
     mobileNumber1,
-    birthdate1,
+    birthDate1,
     poloSize1,
     category1,
     clubPlay1,
     positionPlay1,
     medicalProblem1,
-    nameOne2,
+    score1,
+    name2,
     lastName2,
     RutPlayer2,
     email2,
     mobileNumber2,
-    birthdate2,
+    birthDate2,
     poloSize2,
     category2,
     clubPlay2,
     positionPlay2,
     medicalProblem2,
+    score2,
+    playerImg: imgUploaded.metadata.fullPath,
   });
 
   return res.status(200).json({

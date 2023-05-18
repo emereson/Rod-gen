@@ -12,7 +12,7 @@ const Inscription = db.define('inscription', {
     type: DataTypes.INTEGER,
     allowNull: false,
   },
-  nameOne1: {
+  name1: {
     type: DataTypes.STRING,
     allowNull: false,
   },
@@ -37,24 +37,12 @@ const Inscription = db.define('inscription', {
     allowNull: false,
   },
   poloSize1: {
-    type: DataTypes.ENUM('s', 'm ', 'l', 'xl', 'xxl'),
+    type: DataTypes.STRING,
     allowNull: false,
-    defaultValue: 'l',
+    defaultValue: 'L',
   },
   category1: {
-    type: DataTypes.ENUM(
-      'damas A',
-      'damas B',
-      'damas C',
-      'damas D',
-      '1ra Masculina',
-      '2da Masculina',
-      '3ra Masculina',
-      '4ta Masculina',
-      '5ta Masculina',
-      '6ta Masculina',
-      'mixto'
-    ),
+    type: DataTypes.STRING,
     allowNull: false,
     defaultValue: 'mixto',
   },
@@ -63,7 +51,7 @@ const Inscription = db.define('inscription', {
     allowNull: false,
   },
   positionPlay1: {
-    type: DataTypes.ENUM('Derecho', 'Rever', 'Ambos'),
+    type: DataTypes.STRING,
     allowNull: false,
     defaultValue: 'Ambos',
   },
@@ -71,7 +59,12 @@ const Inscription = db.define('inscription', {
     type: DataTypes.STRING,
     allowNull: false,
   },
-  nameOne2: {
+  score1: {
+    type: DataTypes.STRING,
+    allowNull: false,
+    defaultValue: '0',
+  },
+  name2: {
     type: DataTypes.STRING,
     allowNull: false,
   },
@@ -96,24 +89,12 @@ const Inscription = db.define('inscription', {
     allowNull: false,
   },
   poloSize2: {
-    type: DataTypes.ENUM('s', 'm ', 'l', 'xl', 'xxl'),
+    type: DataTypes.STRING,
     allowNull: false,
-    defaultValue: 'l',
+    defaultValue: 'L',
   },
   category2: {
-    type: DataTypes.ENUM(
-      'damas A',
-      'damas B',
-      'damas C',
-      'damas D',
-      '1ra Masculina',
-      '2da Masculina',
-      '3ra Masculina',
-      '4ta Masculina',
-      '5ta Masculina',
-      '6ta Masculina',
-      'mixto'
-    ),
+    type: DataTypes.STRING,
     allowNull: false,
   },
   clubPlay2: {
@@ -121,13 +102,28 @@ const Inscription = db.define('inscription', {
     allowNull: false,
   },
   positionPlay2: {
-    type: DataTypes.ENUM('Derecho', 'Rever', 'Ambos'),
+    type: DataTypes.STRING,
     allowNull: false,
     defaultValue: 'Ambos',
   },
   medicalProblem2: {
     type: DataTypes.STRING,
     allowNull: false,
+  },
+  score2: {
+    type: DataTypes.STRING,
+    allowNull: false,
+    defaultValue: '0',
+  },
+  playerImg: {
+    type: DataTypes.STRING,
+    defaultValue:
+      'https://www.unheval.edu.pe/biblioteca/wp-content/uploads/2020/09/perfil.jpg',
+  },
+  status: {
+    type: DataTypes.ENUM('active', 'removed', 'disabled'),
+    allowNull: false,
+    defaultValue: 'active',
   },
 });
 
